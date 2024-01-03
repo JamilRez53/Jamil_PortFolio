@@ -23,11 +23,11 @@ const Navbar = () => {
     setNav(!nav);
   }
   return (
-    <div className="w-full h-[80px] bg-[#000119] justify-between flex items-center px-4 text-white font-Kanit">
+    <div className="fixed w-full h-[80px] bg-[#000119] justify-between flex items-center px-4 text-white font-Kanit">
       <div>
         <h1>JamilReza</h1>
       </div>
-      <div className='hidden fixed sm:flex mx-[550px] '>
+      <div className='hidden sm:flex mx-[550px] '>
       {
         NavItems.map((items)=>{
           console.log(items);
