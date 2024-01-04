@@ -1,27 +1,25 @@
 import React, { useState } from 'react'
 import { FaBars,FaTimes } from 'react-icons/fa';
-const Navbar = () => {
+import { Link , useNavigate} from 'react-router-dom';
+const Navbar = ({scrollToSection}) => {
   const NavItems = [
-    {
-      name:"Home"
-    },
-    {
-      name:"Experience"
-    },
-    {
-      name:"Projects"
-    },
-    {
-      name:"Skills"
-    },
-    {
-      name:"Contact"
-    },
-    ]
+    { name: "Home", id: "home" ,path:"/"},
+    { name: "Experience", id: "experience" , path:"/experience" },
+    { name: "Projects", id: "projects" , path:"/projects"},
+    { name: "Skills", id: "skills" , path:"/skills"},
+    { name: "Contact", id: "contact" ,path:"/contact" },
+  ];
   const [nav,setNav] = useState(false);
   const clickNav = ()=>{
     setNav(!nav);
   }
+  const navigate = useNavigate();
+
+  // const handleNavLinkClick = (sectionId) => {
+  //   console.log(sectionId);
+  //   navigate(`#${sectionId}`);
+  // };
+  
   return (
     <div className="fixed w-full h-[80px] bg-[#000119] justify-between flex items-center px-4 text-white font-Kanit">
       <div>
@@ -32,8 +30,12 @@ const Navbar = () => {
         NavItems.map((items)=>{
           console.log(items);
           return(
-            <ul className="hidden sm:flex mx-[50px] cursor-pointer">
-           <li>{items.name}</li>
+            <ul 
+            key={items.id}
+            className="hidden sm:flex mx-[50px] cursor-pointer"
+            // onClick={() => scrollToSection(items.id)}
+            >
+           <li><Link to={items.path} onClick={scrollToSection(items.id)}>{items.name}</Link></li>
             </ul>
           
           )
@@ -52,7 +54,10 @@ const Navbar = () => {
       <ul>
       {NavItems.map((items)=>{
         return(
-          <li className='py-6 text-4xl'>{items.name}</li>
+          <li 
+          key={items.id}
+          // onClick={() => scrollToSection(items.id)}
+          className='py-6 text-4xl'>{items.name}</li>
         )
       })}
       </ul>
