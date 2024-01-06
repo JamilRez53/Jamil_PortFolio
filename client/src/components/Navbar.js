@@ -28,7 +28,7 @@ const Navbar = ({scrollToSection}) => {
       <div className='hidden sm:flex mx-[550px] '>
       {
         NavItems.map((items)=>{
-          console.log(items);
+          // console.log(items);
           return(
             <ul 
             key={items.id}
