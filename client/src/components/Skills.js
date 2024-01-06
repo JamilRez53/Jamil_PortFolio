@@ -5,6 +5,7 @@ import Mongo from '../assets/mongoDb.png';
 import Reat from '../assets/react.png';
 import MySql from '../assets/mysql.png';
 import Nodejs from '../assets/nodejs.png';
+import { motion } from 'framer-motion';
 const Skills = () => {
   const skills = [
     {
@@ -33,42 +34,25 @@ const Skills = () => {
     },
 
   ]
-  const [scrollPosition, setScrollPosition] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollPosition(window.scrollX);
-    };
-
-    // Attach the event listener when the component mounts
-    window.addEventListener('scroll', handleScroll);
-
-    // Detach the event listener when the component unmounts
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
-  // Adjust the slider animation based on the scroll position
-  const sliderStyle = {
-    transform: `translateY(${scrollPosition / 2}px)`, // Adjust the multiplier for the desired effect
-    transition: 'transform 0.3s ease-in-out', // Add a smooth transition
-  };
   return (
-    <div id='skills' style={sliderStyle}>
+    <div id='skills'>
       <p className="text-white text-center mt-[100px] text-4xl font-Kanit">Skills Upon Speicific Tech-Stack</p>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-2 items-center justify-around mt-[50px]">
         
        {skills.map((items)=>{
         return(
-          <div className='m-auto flex flex-col items-center'>
+          <motion.div className='m-auto flex flex-col items-center'
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          >
           <img 
           className='w-[50px] h-[50px]'
           src={items.image}/>
           <p className="text-white font-Kanit text-2xl">
             {items.text}
           </p>
-          </div>
+          </motion.div>
           
         )
        })}
