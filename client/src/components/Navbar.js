@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { FaBars,FaTimes } from 'react-icons/fa';
-import { Link , useNavigate} from 'react-router-dom';
+import { Link ,useNavigate } from 'react-router-dom';
 const Navbar = ({scrollToSection}) => {
   const NavItems = [
     { name: "Home", id: "home" ,path:"/"},
@@ -10,10 +10,10 @@ const Navbar = ({scrollToSection}) => {
     { name: "Contact", id: "contact" ,path:"/contact" },
   ];
   const [nav,setNav] = useState(false);
+  const navigate = useNavigate();
   const clickNav = ()=>{
     setNav(!nav);
   }
-  const navigate = useNavigate();
 
   // const handleNavLinkClick = (sectionId) => {
   //   console.log(sectionId);
@@ -57,7 +57,9 @@ const Navbar = ({scrollToSection}) => {
           <li 
           key={items.id}
           // onClick={() => scrollToSection(items.id)}
-          className='py-6 text-4xl'>{items.name}</li>
+          className='py-6 text-4xl'>
+            <Link to={items.path} onClick={()=>{scrollToSection(items.id);setNav(!nav)}}>{items.name}</Link>
+            </li>
         )
       })}
       </ul>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState,useEffect} from 'react'
 import Html from '../assets/html.png';
 import JavaScript from '../assets/java-script.png';
 import Mongo from '../assets/mongoDb.png';
@@ -33,9 +33,30 @@ const Skills = () => {
     },
 
   ]
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollX);
+    };
+
+    // Attach the event listener when the component mounts
+    window.addEventListener('scroll', handleScroll);
+
+    // Detach the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  // Adjust the slider animation based on the scroll position
+  const sliderStyle = {
+    transform: `translateY(${scrollPosition / 2}px)`, // Adjust the multiplier for the desired effect
+    transition: 'transform 0.3s ease-in-out', // Add a smooth transition
+  };
   return (
-    <div id='skills'>
-      <p className="text-white text-center mt-[30px] text-4xl font-Kanit">Skills Upon Speicific Tech-Stack</p>
+    <div id='skills' style={sliderStyle}>
+      <p className="text-white text-center mt-[100px] text-4xl font-Kanit">Skills Upon Speicific Tech-Stack</p>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-2 items-center justify-around mt-[50px]">
         
        {skills.map((items)=>{

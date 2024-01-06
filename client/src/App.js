@@ -7,6 +7,7 @@ import Skills from './components/Skills';
 function App() {
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
+    console.log(section);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
     }

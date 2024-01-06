@@ -29,8 +29,8 @@ const Home = () => {
   };
 
   return (
-    <div className='w-full h-screen flex flex-col-reverse md:flex-row  bg-[#000119]'>
-      <div className='mt-[250px] px-[20px] sm:mt-[200px] sm:px-[50px]'>
+    <div className='flex flex-col-reverse md:flex-row  bg-[#000119]'>
+      <div className='mt-[150px] px-[20px] sm:mt-[200px] sm:px-[50px]'>
         {texts.map((items, index) => {
           return (
             <div className='justify-around p-3' key={index}>
