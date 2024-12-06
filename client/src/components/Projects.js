@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion';
+import ModalComponent from './ModalComponent';
 const Projects = () => {
   const projects = [
     { 
@@ -29,44 +30,64 @@ const Projects = () => {
     }
 
   ]
-  // const [seeDesc, setSeeDesc] = useState(Array(projects.length).fill(false));
-  const [expandedIndex, setExpandedIndex] = useState(null);
-
-  const ClickDesc = (index) => {
-    setExpandedIndex(expandedIndex === index ? null : index);
-  };
+  const [show,setShow] = useState(false);
+  const [project,setShowProject] = useState(null);
+  const handlShowModal = (project)=>{
+    setShow(true);
+    setShowProject(project);
+  }
+  const handleCloseModal = ()=>{
+    setShow(false);
+    setShowProject(null);
+  }
   return (
-    <div id="projects">
+    <>
+     <div id="projects">
       
-     <div className="text-white font-Lato text-4xl p-8 text-center">
-     <p className=" text-white font-Lato text-4xl m-8">Projects Completed</p>
-     <div className='grid grid-cols-1 md:grid-cols-2'>
-     {projects.map((item,index)=>{
+      <div className="text-white font-Lato text-4xl p-8 text-center">
+      <p className=" text-white font-Lato text-4xl m-8">Projects Completed</p>
+      <div className='grid grid-cols-1 md:grid-cols-2'>
+      {projects.map((item,index)=>{
+       return(
+         <motion.div className='card border-2 rounded-xl p-4 m-4 items-center hover:bg-white hover:text-black'
+         initial={{ opacity: 0 }}
+         whileInView={{ opacity: 1 }}
+         transition={{ duration: 1 }}
+         >
+           {/* {expandedIndex===index?<div className="bg-white text-black text-center text-2xl">
+             <p className="text-4xl font-semibold m-4">{item.name} Project</p>
+             <p>{item.description}</p>
+             <button onClick={()=>{ClickDesc(index)}}>-</button>
+           </div>:
+           <div className="text-center">
+           <p><a href={item.liveLink}>{item.name}</a></p>
+           <button className="m-auto" onClick={()=>{ClickDesc(index)}}>+</button>
+           </div>
+           } */}
+           <button onClick={()=>handlShowModal(item)}>{item.name}</button>
+           
+           
+         </motion.div>
+       )
+      })}
+      </div>
+      
+      </div>
+     </div>
+     {show && project && (<ModalComponent
+     onClose={handleCloseModal}
+     isOpen={handlShowModal}
+     content={()=>{
       return(
-        <motion.div className='card border-2 rounded-xl p-4 m-4 items-center hover:bg-white hover:text-black'
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        >
-          {expandedIndex===index?<div className="bg-white text-black text-center text-2xl">
-            <p className="text-4xl font-semibold m-4">{item.name} Project</p>
-            <p>{item.description}</p>
-            <button onClick={()=>{ClickDesc(index)}}>-</button>
-          </div>:
-          <div className="text-center">
-          <p><a href={item.liveLink}>{item.name}</a></p>
-          <button className="m-auto" onClick={()=>{ClickDesc(index)}}>+</button>
-          </div>
-          }
-          
-          
-        </motion.div>
+        <div className='flex flex-col justify-center align-center'>
+          <h1 className='font-Kanit font-semibold text-center text-2xl'>{project.name}</h1>
+          <p className='font-Kanit text-center'>{project.description}</p>
+        </div>
       )
-     })}
-     </div>
-     
-     </div>
-    </div>
+     }}
+     />)}
+    </>
+   
   )
 }
 

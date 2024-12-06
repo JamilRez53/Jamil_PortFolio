@@ -7,5 +7,7 @@ module.exports = {
     Lato:["Lato","sans-serif"],
     Playfair:['Playfair Display', 'serif']}
   },
-  plugins: [],
+  plugins: [
+    require('daisyui'),
+  ],
 }
