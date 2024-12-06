@@ -3,23 +3,7 @@ import { HiArrowNarrowRight } from 'react-icons/hi';
 import { motion } from 'framer-motion';
 import PortFolio from '../assets/IMG_7719.jpg';
 
-const Home = () => {
-  const texts = [
-    {
-      text: 'Hello I am,',
-    },
-    {
-      text: 'Jamil Reza',
-    },
-    {
-      text: 'A Front-end Developer',
-    },
-    {
-      text:
-        'I am a Junior Web Developer who is currently working on front-end aiming to be a Full-Stack developer in the future',
-    },
-  ];
-
+const Home = ({scrollToSection}) => {
   const buttonVariants = {
     hover: {
       scale: 1.1,
@@ -29,48 +13,58 @@ const Home = () => {
   };
 
   return (
-    <div className='flex flex-col-reverse md:flex-row  bg-[#000119]'>
-      <div className='mt-[150px] px-[20px] sm:mt-[200px] sm:px-[50px]'>
-        {texts.map((items, index) => {
-          return (
-            <div className='justify-around p-3' key={index}>
+    <div className='flex flex-col-reverse justify-center pt-24 items-center md:flex-row  bg-[#000119]'>
+      <div className='flex flex-col w-80 px-4 py-2 justify-center items-center'>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.3 }}
-                className={
-                  index === 2 || index === 3
-                    ? 'text-[#cccccc] w-7/8 sm:w-5/6 text-2xl sm:text-5xl font-Kanit'
-                    : 'text-white w-7/8 sm:w-5/6 font-Kanit text-4xl sm:text-7xl'
-                }
+                transition={{ delay: 0.3 }}
+                className='text-[#cccccc] text-center text-lg font-Kanit'
               >
-                {items.text}
+                Jamil Reza
               </motion.p>
-            </div>
-          );
-        })}
-
-        <div className='mt-4'>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className='text-[#cccccc] text-center text-lg font-Kanit'
+              >
+                Assistant Software Engineer
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className='text-[#cccccc] text-center text-lg font-Kanit'
+              >
+                IDLC Finance PLC
+              </motion.p>
           <motion.button
+          onClick={()=>scrollToSection('projects')}
             variants={buttonVariants}
             whileHover='hover'
-            className='flex group font-Kanit border-2 px-6 py-2 my-2 items-center shadow-white hover:shadow-blue-800 shadow-lg bg-white hover:bg-blue-800 hover:border-blue-800 hover:text-white'
+            className='flex w-52 gap-2 font-Kanit border-2 px-6 py-2 my-2 items-center shadow-white hover:shadow-blue-800 shadow-lg bg-white hover:bg-blue-800 hover:border-blue-800 hover:text-white'
           >
             View Projects
-            <span className='group-hover:rotate-90 duration-300'>
-              <HiArrowNarrowRight className='ml-3' />
+            <span>
+              <HiArrowNarrowRight/>
             </span>
           </motion.button>
-        </div>
       </div>
-      <motion.img
-        initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.5 }}
+      <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5 }}
+              className='flex justify-center items-center'
+      >
+      <img
+
         src={PortFolio}
-        className='m-4 sm:mt-[250px] ml-[10px] sm:w-[350px] h-[350px] sm:ml-auto sm:mr-[150px] order-first sm:order-last border-8 shadow-lg shadow-white'
+        className='w-48 h-48 border-8 shadow-lg shadow-white'
         alt='Portfolio'
       />
+      </motion.div>
+      
     </div>
   );
 };

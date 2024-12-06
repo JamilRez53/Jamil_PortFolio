@@ -35,19 +35,15 @@ const Projects = () => {
   const ClickDesc = (index) => {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
-  // const ClickDesc = (index)=>{
-  //   const newSeeDesc = [...seeDesc];
-  //   newSeeDesc[index] = !newSeeDesc[index];
-  //   setSeeDesc(newSeeDesc);
-  // }
   return (
     <div id="projects">
       
      <div className="text-white font-Lato text-4xl p-8 text-center">
      <p className=" text-white font-Lato text-4xl m-8">Projects Completed</p>
+     <div className='grid grid-cols-1 md:grid-cols-2'>
      {projects.map((item,index)=>{
       return(
-        <motion.div className='card border-2 p-4 m-4 items-center'
+        <motion.div className='card border-2 rounded-xl p-4 m-4 items-center hover:bg-white hover:text-black'
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -67,6 +63,8 @@ const Projects = () => {
         </motion.div>
       )
      })}
+     </div>
+     
      </div>
     </div>
   )

@@ -15,12 +15,16 @@ function App() {
   };
 
   return (
-    <div className='w-screen h-full bg-[#000119]'>
-      <Navbar scrollToSection={scrollToSection}/>
-      <Home/>
+    <>
+    <Navbar scrollToSection={scrollToSection}/>
+    <div className='w-full h-full bg-[#000119]'>
+      
+      <Home scrollToSection={scrollToSection}/>
       <Skills/>
       <Projects/>
     </div>
+    </>
+    
   );
 }
 

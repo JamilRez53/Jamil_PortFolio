@@ -35,7 +35,7 @@ const Navbar = ({scrollToSection}) => {
             className="hidden sm:flex mx-[50px] cursor-pointer"
             // onClick={() => scrollToSection(items.id)}
             >
-           <li><Link to={items.path} onClick={scrollToSection(items.id)}>{items.name}</Link></li>
+           <li><Link to={items.path} onClick={()=>scrollToSection(items.id)}>{items.name}</Link></li>
             </ul>
           
           )
