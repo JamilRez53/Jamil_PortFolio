@@ -5,6 +5,8 @@ import Mongo from '../assets/mongoDb.png';
 import Reat from '../assets/react.png';
 import MySql from '../assets/mysql.png';
 import Nodejs from '../assets/nodejs.png';
+import ReactNative from '../assets/React-native.png';
+import Prisma from "../assets/prisma.png";
 import { motion } from 'framer-motion';
 const Skills = () => {
   const skills = [
@@ -32,16 +34,23 @@ const Skills = () => {
       image: Nodejs,
       text:"NODE.JS"
     },
-
+    {
+      image:ReactNative,
+      text:"React Native"
+    },
+    {
+      image: Prisma,
+      text:"Prisma"
+    }
   ]
   return (
     <div id='skills'>
-      <p className="text-white text-center mt-[100px] text-4xl font-Kanit">Skills Upon Speicific Tech-Stack</p>
+      <p className="text-white text-center mt-[100px] text-4xl font-Kanit">Expertise</p>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-2 items-center justify-around mt-[50px]">
         
        {skills.map((items)=>{
         return(
-          <motion.div className='m-auto flex flex-col items-center'
+          <motion.div className='flex flex-col py-2 justify-center items-center gap-2'
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}
@@ -49,7 +58,7 @@ const Skills = () => {
           <img 
           className='w-[50px] h-[50px]'
           src={items.image}/>
-          <p className="text-white font-Kanit text-2xl">
+          <p className="text-white text-center font-Kanit text-2xl">
             {items.text}
           </p>
           </motion.div>

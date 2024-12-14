@@ -75,8 +75,9 @@ const Projects = () => {
       </div>
      </div>
      {show && project && (<ModalComponent
-     onClose={handleCloseModal}
      isOpen={handlShowModal}
+     onClose={handleCloseModal}
+     setOpen={handlShowModal}
      content={()=>{
       return(
         <div className='flex flex-col justify-center align-center'>
