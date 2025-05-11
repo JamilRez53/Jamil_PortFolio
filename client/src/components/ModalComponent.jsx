@@ -1,5 +1,4 @@
-
-import { Modal } from 'react-responsive-modal';
+import Modal from "react-modal";
 const customStyles = {
   content: {
     top: "50%",
