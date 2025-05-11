@@ -30,9 +30,9 @@ const Projects = () => {
     },
     {
       id:5,
-      name:"Sumon-Enterprise",
-      liveLink:"https://sumon-enterprise.com/",
-      description:"his is one of our company projects where we have been assigned to build a client side website. In order to complete the project we have used the JavaScript library react and we have integrated it with tailwind-css to make the website look beautiful. Besides we have also added animation to our projects using different animation library such as react-reveal or framer-motion."
+      name:"SCS Erp",
+      liveLink:"https://github.com/shafinnahian/SCS-ERP-Kreatect",
+      description:"This is also one of our company projects . In this part all the activities and necessary info regarding our client have been divided into 5 sections (Home, About, Service, Our Work, Contact ) . We have implemented the JavaScript library React to create a structure for our project and we have added tailwind CSS along with several animation features from react library such as framer motion and react-reveal."
     }
 
   ]
